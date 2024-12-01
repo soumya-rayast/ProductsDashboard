@@ -10,7 +10,7 @@ const ProductTable = ({ category, sold, price, search }) => {
     // Fetch products
     useEffect(() => {
         axios
-            .get(`${Backend_API}/getAllProducts`)
+            .get(`${Backend_API}/api/products/getAllProducts`)
             .then((response) => {
                 setProducts(response.data);
                 setFilteredProducts(response.data); 
