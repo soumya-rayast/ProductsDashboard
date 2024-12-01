@@ -17,7 +17,6 @@ The **Product Dashboard** is a comprehensive solution for visualizing and managi
 ## Features  
 
 - **Product Visualization:** Interactive charts displaying product statistics.  
-- **Product Management:** CRUD operations for product data.  
 - **Responsive Design:** Optimized for desktop and mobile devices.  
 - **Real-time Updates:** Data sync with MongoDB using REST APIs.  
 
