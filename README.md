@@ -57,8 +57,8 @@ The **Product Dashboard** is a comprehensive solution for visualizing and managi
    npm install
 4. **Set up environment variables**
    ```bash
-  MONGO_URI=your_mongodb_connection_string  
-  PORT=8000 
+   MONGO_URI=your_mongodb_connection_string
+   PORT=8000 
 
 5. **Run the backend**
    ```bash
