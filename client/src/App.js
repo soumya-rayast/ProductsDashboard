@@ -1,30 +1,23 @@
-import React, { useState } from "react";
-import Filters from "./Components/Filters";
-import ProductTable from "./Components/ProductTable";
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Sidebar from "./Components/Sidebar";
+import Products from "./Pages/Products";
+import './App.css';
+import Dashboard from "./Pages/Dashboard";
 
 const App = () => {
-  const [category, setCategory] = useState("");
-  const [sold, setSold] = useState("");
-  const [price, setPrice] = useState("");
-  const [search, setSearch] = useState("");
-  const categories = ["Electronics", "Fitness", "Kitchen", "Furniture", "Clothing", "Accessories"];
-
   return (
-    <div>
-      <Filters
-        categories={categories}
-        onCategoryFilter={setCategory}
-        onSoldFilter={setSold}
-        onPriceFilter={setPrice}
-        onSearch={setSearch}
-      />
-      <ProductTable
-        category={category}
-        sold={sold}
-        price={price}
-        search={search}
-      />
-    </div>
+    <Router>
+      <div className="dashboard">
+        <Sidebar />
+        <div className="main-content">
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/productTable" element={<Products />} /> 
+          </Routes>
+        </div>
+      </div>
+    </Router>
   );
 };
 

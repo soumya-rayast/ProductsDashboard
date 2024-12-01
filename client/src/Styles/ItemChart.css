@@ -1,0 +1,45 @@
+.items-chart-container {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+.items-chart-container h2 {
+    font-size: 24px;
+    color: blueviolet;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.items-chart-container canvas {
+    max-width: 100%;
+    height: auto;
+}
+
+.items-chart-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.items-chart-container::-webkit-scrollbar-thumb {
+    background: #9c9c9c;
+    border-radius: 4px;
+}
+
+.items-chart-container::-webkit-scrollbar-track {
+    background: #e0e0e0;
+}
+
+@media (max-width: 768px) {
+    .items-chart-container {
+        padding: 15px;
+        box-shadow: none;
+    }
+
+    .items-chart-container h2 {
+        font-size: 20px;
+    }
+}

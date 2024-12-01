@@ -3,68 +3,89 @@ import axios from "axios";
 import "../Styles/ProductTable.css";
 import { Backend_API } from "../constant";
 
-const ProductTable = () => {
-  const [products, setProducts] = useState([]);
+const ProductTable = ({ category, sold, price, search }) => {
+    const [products, setProducts] = useState([]);
+    const [filteredProducts, setFilteredProducts] = useState([]);
 
-  // Fetch products
-  useEffect(() => {
-    axios
-      .get(`${Backend_API}/getAllProducts`)
-      .then((response) => {
-        console.log("Fetched Products:", response.data);
-        setProducts(response.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching products:", error);
-      });
-  }, []);
+    // Fetch products
+    useEffect(() => {
+        axios
+            .get(`${Backend_API}/getAllProducts`)
+            .then((response) => {
+                setProducts(response.data);
+                setFilteredProducts(response.data); 
+            })
+            .catch((error) => {
+                console.error("Error fetching products:", error);
+            });
+    }, []);
 
+    // Filter products whenever filters change
+    useEffect(() => {
+        let updatedProducts = products;
 
-  return (
-    <div>
-      <h2>Product Table</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Product Title</th>
-            <th>Price</th>
-            <th>Description</th>
-            <th>Category</th>
-            <th>Image</th>
-            <th>Sold</th>
-            <th>Is Sale</th>
-          </tr>
-        </thead>
-        <tbody>
-          {products.length > 0 ? (
-            products.map((product) => (
-              <tr key={product._id}>
-                <td>{product.title}</td>
-                <td>${product.price}</td>
-                <td>{product.description}</td>
-                <td>{product.category}</td>
-                <td>
-                  <img
-                    src={product.image}
-                    alt={product.title}
-                    style={{ width: "50px" }}
-                  />
-                </td>
-                <td>{product.sold ? "Yes" : "No"}</td>
-                <td style={{ color: product.inSale ? "green" : "red" }}>
-                  {product.inSale ? "On Sale" : "Not on Sale"}
-                </td>
-              </tr>
-            ))
-          ) : (
-            <tr>
-              <td colSpan="7">No products available</td>
-            </tr>
-          )}
-        </tbody>
-      </table>
-    </div>
-  );
+        if (category) {
+            updatedProducts = updatedProducts.filter((product) => product.Category === category);
+        }
+
+        if (sold) {
+            const isSold = sold === "true";
+            updatedProducts = updatedProducts.filter((product) => product.Sold === isSold);
+        }
+
+        if (price) {
+            updatedProducts = updatedProducts.filter((product) => product.Price <= price);
+        }
+
+        if (search) {
+            updatedProducts = updatedProducts.filter((product) =>
+                product.Title.toLowerCase().includes(search.toLowerCase())
+            );
+        }
+
+        setFilteredProducts(updatedProducts);
+    }, [category, sold, price, search, products]);
+
+    return (
+        <div className="table-container">
+            <h2 >Product Table</h2>
+            {filteredProducts.length === 0 ? (
+                <p>No products available</p>
+            ) : (
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Product Title</th>
+                            <th>Price</th>
+                            <th>Description</th>
+                            <th>Category</th>
+                            <th>Image</th>
+                            <th>Sold</th>
+                            <th>Is Sale</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {filteredProducts.map((product) => (
+                            <tr key={product._id}>
+                                <td>{product.Title}</td>
+                                <td>${product.Price}</td>
+                                <td>{product.Description}</td>
+                                <td>{product.Category}</td>
+                                <td>
+                                    <img src={product.Image} alt={product.Title} style={{ width: "50px" }} />
+                                </td>
+                                <td>{product.Sold ? "Yes" : "No"}</td>
+                                <td style={{ color: product.InSale ? "green" : "red" }}>
+                                    {product.InSale ? "On Sale" : "Not on Sale"}
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            )}
+        </div>
+    );
 };
+
 
 export default ProductTable;

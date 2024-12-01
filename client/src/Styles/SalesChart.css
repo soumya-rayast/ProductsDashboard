@@ -1,0 +1,31 @@
+.sales-chart-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+.sales-chart-container h2 {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: blueviolet;
+    font-weight: bold;
+}
+
+.sales-chart-container canvas {
+    max-width: 100%;
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    .sales-chart-container {
+        padding: 15px;
+    }
+
+    .sales-chart-container h2 {
+        font-size: 20px;
+    }
+}

@@ -1,0 +1,32 @@
+.dashboard-container {
+    padding: 20px;
+    background-color: #f4f4f4;
+    min-height: 100vh;
+    
+}
+.dashboard-container h1 {
+    text-align: center;
+    font-size: 32px;
+    color: blueviolet;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+.chart-container {
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff; 
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+    max-width: 900px;
+}
+
+@media (max-width: 768px) {
+    .dashboard-container h1 {
+        font-size: 24px;
+    }
+
+    .chart-container {
+        padding: 15px;
+        margin: 15px auto;
+    }
+}

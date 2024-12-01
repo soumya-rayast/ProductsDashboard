@@ -16,17 +16,6 @@ const Filters = ({ categories, onCategoryFilter, onSoldFilter, onPriceFilter, on
                     ))}
                 </select>
             </div>
-
-            <div className="filter_option">
-                {/* Sold Filter */}
-                <label>Sold:</label>
-                <select onChange={(e) => onSoldFilter(e.target.value)}>
-                    <option value="">All</option>
-                    <option value="true">Yes</option>
-                    <option value="false">No</option>
-                </select>
-            </div>
-
             <div className="filter_option">
                 {/* Price Filter */}
                 <label>Price Range:</label>

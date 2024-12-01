@@ -1,0 +1,87 @@
+.sidebar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    width: 180px;
+    background-color: blueviolet;
+    color: #fff;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+}
+
+.sidebar h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li {
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 16px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.sidebar ul li:hover,
+.sidebar ul li:focus-within {
+    background-color: rgb(119, 36, 197);
+    outline: none;
+}
+
+.sidebar::-webkit-scrollbar {
+    width: 8px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: blueviolet;
+    border-radius: 4px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+    background: #7e3ff2;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: #4c2479;
+}
+
+.sidebar-link {
+    font-size: 16px;
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 8px 0;
+    transition: color 0.3s ease;
+}
+
+.sidebar-link:hover,
+.sidebar-link:focus {
+    color: white;
+}
+
+.active-link {
+    font-weight: bold;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        box-shadow: none;
+    }
+
+    .sidebar ul li {
+        margin: 8px 0;
+    }
+}

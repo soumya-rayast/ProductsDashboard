@@ -1,21 +1,32 @@
 import React from "react";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
 import { Bar } from "react-chartjs-2";
+import '../Styles/ItemChart.css';
+
+ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 const ItemsChart = ({ salesData }) => {
-  const categories = salesData.map((data) => data.category);
-  const monthlyLabels = Object.keys(salesData[0].totalItems);
-
+  const monthlyLabels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"];
+  
   const data = {
     labels: monthlyLabels,
-    datasets: categories.map((category, index) => ({
-      label: category,
-      data: salesData[index].totalItems,
-      backgroundColor: `rgba(${index * 50}, 159, 64, 0.6)`,
+    datasets: salesData.map((data, index) => ({
+      label: data.category,
+      data: data.totalItems,
+      backgroundColor: `rgba(${(index * 100) % 255}, 159, 64, 0.6)`,
     })),
   };
 
   return (
-    <div>
+    <div className="items-chart-container">
       <h2>Total Items in Each Category (Monthly)</h2>
       <Bar data={data} />
     </div>
