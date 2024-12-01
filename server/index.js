@@ -23,6 +23,6 @@ app.use('/api/products', productRoutes);
 // Initialize the PORT
 
 const port = process.env.PORT || 8000;
-app.listen(PORT, () => {
+app.listen(port, () => {
     console.log(`Server is running at port ${port}`)
 })
