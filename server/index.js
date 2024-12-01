@@ -22,7 +22,7 @@ app.use('/api/products', productRoutes);
 // Starting the server
 // Initialize the PORT
 
-const PORT = process.env.PORT || 8000;
+const port = process.env.PORT || 8000;
 app.listen(PORT, () => {
-    console.log(`Server is running at port ${PORT}`)
+    console.log(`Server is running at port ${port}`)
 })
