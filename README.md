@@ -70,7 +70,7 @@ The **Product Dashboard** is a comprehensive solution for visualizing and managi
    npm start  
 
 <h2>Deployed Link</h2>
-<a href=''>Live Demo</a>
+<a href='https://products-dashboard-six.vercel.app/'>Live Demo</a>
 
 
 
